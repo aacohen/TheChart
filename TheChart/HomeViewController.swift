@@ -25,10 +25,11 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.view.addSubview(self.tableView)
         
         // Do any additional setup after loading the view.
-        
+                let addChild = Child(name: "Add Child", age: "")
                 let childOne = Child(name: "Gabrielle", age: "2")
                 let childTwo = Child(name: "Ellen", age: "12")
         
+                children.append(addChild)
                 children.append(childOne)
                 children.append(childTwo)
         
@@ -55,17 +56,27 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     
         func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+            
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! HomeTableViewCell
-            cell.nameLabel.text = "Name: Hello"
-            //        cell.nameLabel.text = children[indexPath.row].name
+            
+            if indexPath.row == 0 {
+                // add child cell
+                cell.nameLabel.text = "Add Child"
+                cell.profileImage.backgroundColor = UIColor.darkGray
+                
+            } else {
+                
+            
+//            cell.nameLabel.text = "Name: Hello"
+                  cell.nameLabel.text = "Name: \(children[indexPath.row].name)"
 
-//            print("\(children[0].name)")
+//            print("\(children[1].name)")
             cell.ageLabel.text = "Age: 2"
 //            cell.ageLabel.text = children[indexPath.row].age
             // cell.profileImage.image = children[indexPath.row].image
     
             cell.backgroundColor = UIColor.blue
-            
+            }
             return cell
         }
     
