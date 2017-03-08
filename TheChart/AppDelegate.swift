@@ -13,16 +13,16 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         self.window = UIWindow(frame: UIScreen.main.bounds)
         
-        // let storyboard = UIStoryboard(name: "Main", bundle: nil)
         
-        //let initialViewController = storyboard.instantiateViewController(withIdentifier: "LoginSignupVC")
-        
-        self.window?.rootViewController = HomeViewController()
+        let navVC = UINavigationController()
+        let mainView = HomeViewController(nibName: nil, bundle: nil)
+        navVC.viewControllers = [mainView]
+        self.window?.rootViewController = navVC
         self.window?.makeKeyAndVisible()
 
         return true
