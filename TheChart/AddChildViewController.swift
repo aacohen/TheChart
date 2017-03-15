@@ -24,7 +24,7 @@ class AddChildViewController: UIViewController {
         setupView()
         view.backgroundColor = UIColor.blue
         setupView()
-        createStackView()
+        
         // Do any additional setup after loading the view.
     }
 
@@ -35,51 +35,73 @@ class AddChildViewController: UIViewController {
     
     func setupView() {
         
+        view.addSubview(childNameLabel)
+        childNameLabel.translatesAutoresizingMaskIntoConstraints = false
+        childNameLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: view.frame.width * -0.25).isActive = true
+        childNameLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: view.frame.height * -0.2).isActive = true
         
         childNameLabel.text = "Child Name:"
         childNameLabel.backgroundColor = UIColor.orange
         
-        viewsArray.append(childNameLabel)
-        
+       
+        view.addSubview(childAgeLabel)
+        childAgeLabel.translatesAutoresizingMaskIntoConstraints = false
+        childAgeLabel.centerXAnchor.constraint(equalTo: childNameLabel.centerXAnchor).isActive = true
+        childAgeLabel.centerYAnchor.constraint(equalTo: childNameLabel.centerYAnchor, constant: 40).isActive = true
         childAgeLabel.text = "Child Age:"
         childAgeLabel.backgroundColor = UIColor.orange
-        viewsArray.append(childAgeLabel)
-  
         
+  
+        view.addSubview(childImageLabel)
+        childImageLabel.translatesAutoresizingMaskIntoConstraints = false
+        childImageLabel.centerXAnchor.constraint(equalTo: childNameLabel.centerXAnchor).isActive = true
+        childImageLabel.centerYAnchor.constraint(equalTo: childAgeLabel.centerYAnchor, constant: 40).isActive = true
         childImageLabel.text = "Child Image"
         childImageLabel.backgroundColor = UIColor.orange
-        viewsArray.append(childImageLabel)
         
+        view.addSubview(nameTextField)
+        nameTextField.translatesAutoresizingMaskIntoConstraints = false
+        nameTextField.leadingAnchor.constraint(equalTo: childNameLabel.trailingAnchor, constant: 20).isActive = true
+        nameTextField.centerYAnchor.constraint(equalTo: childNameLabel.centerYAnchor).isActive = true
         nameTextField.placeholder = "Name"
         nameTextField.textAlignment = .center
         nameTextField.backgroundColor = UIColor.gray
-        viewsArray.append(nameTextField)
         
+        
+        view.addSubview(ageTextField)
+        ageTextField.translatesAutoresizingMaskIntoConstraints = false
+        ageTextField.leadingAnchor.constraint(equalTo: childAgeLabel.trailingAnchor, constant: 20).isActive = true
+        ageTextField.centerYAnchor.constraint(equalTo: childAgeLabel.centerYAnchor).isActive = true
         ageTextField.placeholder = "Age"
         ageTextField.textAlignment = .center
         ageTextField.backgroundColor = UIColor.gray
-        viewsArray.append(ageTextField)
         
+        
+        view.addSubview(submitButton)
+        submitButton.translatesAutoresizingMaskIntoConstraints = false
+        submitButton.centerYAnchor.constraint(equalTo: childImageLabel.centerYAnchor, constant: 50).isActive = true
+        submitButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         submitButton.titleLabel?.text = "Submit"
         submitButton.backgroundColor = UIColor.orange
-        viewsArray.append(submitButton)
+        
     }
     
-    func createStackView() {
-        
-        let stackView = UIStackView(arrangedSubviews: viewsArray)
-//        stackView.axis = .vertical
+//    func createStackView() {
+//        
+//        
+//        let stackView = UIStackView(arrangedSubviews: viewsArray)
+//       stackView.axis = .vertical
 //        stackView.distribution = .fillEqually
 //        stackView.alignment = .fill
 //        stackView.spacing = 5
-        childNameLabel.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.10)
-        childNameLabel.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.40)
-        nameTextField.leadingAnchor.constraint(equalTo: childNameLabel.trailingAnchor)
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(stackView)
-        stackView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
-        stackView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
-    }
+//        childNameLabel.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.10)
+//        childNameLabel.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.40)
+//        nameTextField.leadingAnchor.constraint(equalTo: childNameLabel.trailingAnchor)
+//        stackView.translatesAutoresizingMaskIntoConstraints = false
+//        view.addSubview(stackView)
+//        stackView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+//        stackView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
+//    }
 
     /*
     // MARK: - Navigation
