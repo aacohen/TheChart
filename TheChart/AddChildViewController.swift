@@ -17,7 +17,9 @@ class AddChildViewController: UIViewController {
     let ageTextField = UITextField()
     
     let submitButton = UIButton()
-    var viewsArray = [UIView()]
+    
+    var childArray = [Child]()
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,7 +41,6 @@ class AddChildViewController: UIViewController {
         childNameLabel.translatesAutoresizingMaskIntoConstraints = false
         childNameLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: view.frame.width * -0.25).isActive = true
         childNameLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: view.frame.height * -0.2).isActive = true
-        
         childNameLabel.text = "Child Name:"
         childNameLabel.backgroundColor = UIColor.orange
         
@@ -78,30 +79,27 @@ class AddChildViewController: UIViewController {
         
         
         view.addSubview(submitButton)
+        submitButton.addTarget(self, action: #selector(submitButtonPressed), for: .touchUpInside)
         submitButton.translatesAutoresizingMaskIntoConstraints = false
         submitButton.centerYAnchor.constraint(equalTo: childImageLabel.centerYAnchor, constant: 50).isActive = true
         submitButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        submitButton.titleLabel?.text = "Submit"
+        submitButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.25).isActive = true
+        submitButton.heightAnchor.constraint(equalTo: submitButton.widthAnchor, multiplier: 0.25).isActive = true
+        submitButton.setTitle("Submit", for: .normal)
         submitButton.backgroundColor = UIColor.orange
         
     }
     
-//    func createStackView() {
-//        
-//        
-//        let stackView = UIStackView(arrangedSubviews: viewsArray)
-//       stackView.axis = .vertical
-//        stackView.distribution = .fillEqually
-//        stackView.alignment = .fill
-//        stackView.spacing = 5
-//        childNameLabel.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.10)
-//        childNameLabel.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.40)
-//        nameTextField.leadingAnchor.constraint(equalTo: childNameLabel.trailingAnchor)
-//        stackView.translatesAutoresizingMaskIntoConstraints = false
-//        view.addSubview(stackView)
-//        stackView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
-//        stackView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
-//    }
+    func submitButtonPressed() {
+        //validate fields?
+        guard let name = nameTextField.text, let age = ageTextField.text else { return }
+        
+        let child = Child(name: name, age: age)
+        childArray.append(child)
+     //add to core data
+        print(childArray)
+        print("submit button pressed")
+    }
 
     /*
     // MARK: - Navigation
