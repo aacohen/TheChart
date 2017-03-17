@@ -15,6 +15,8 @@
 		F34C76F61E6DAEB5008600DA /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34C76F51E6DAEB5008600DA /* HomeTableViewCell.swift */; };
 		F34C76F81E6DB977008600DA /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34C76F71E6DB977008600DA /* HomeViewController.swift */; };
 		F35E858B1E704D6C000D88DE /* AddChildViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35E858A1E704D6C000D88DE /* AddChildViewController.swift */; };
+		F35E858D1E7AD835000D88DE /* ChildData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35E858C1E7AD835000D88DE /* ChildData.swift */; };
+		F35E85921E7C32D8000D88DE /* CoreDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35E85911E7C32D8000D88DE /* CoreDataModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +30,8 @@
 		F34C76F51E6DAEB5008600DA /* HomeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
 		F34C76F71E6DB977008600DA /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		F35E858A1E704D6C000D88DE /* AddChildViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddChildViewController.swift; sourceTree = "<group>"; };
+		F35E858C1E7AD835000D88DE /* ChildData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChildData.swift; sourceTree = "<group>"; };
+		F35E85911E7C32D8000D88DE /* CoreDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,10 +64,10 @@
 		F34C76DD1E675911008600DA /* TheChart */ = {
 			isa = PBXGroup;
 			children = (
+				F35E85901E7AD894000D88DE /* Data Model */,
+				F35E858F1E7AD873000D88DE /* View */,
+				F35E858E1E7AD861000D88DE /* Controllers */,
 				F34C76DE1E675911008600DA /* AppDelegate.swift */,
-				F34C76F71E6DB977008600DA /* HomeViewController.swift */,
-				F35E858A1E704D6C000D88DE /* AddChildViewController.swift */,
-				F34C76F51E6DAEB5008600DA /* HomeTableViewCell.swift */,
 				F34C76E21E675911008600DA /* Main.storyboard */,
 				F34C76E81E675911008600DA /* Assets.xcassets */,
 				F34C76EA1E675911008600DA /* LaunchScreen.storyboard */,
@@ -71,6 +75,32 @@
 				F34C76E51E675911008600DA /* TheChart.xcdatamodeld */,
 			);
 			path = TheChart;
+			sourceTree = "<group>";
+		};
+		F35E858E1E7AD861000D88DE /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				F34C76F71E6DB977008600DA /* HomeViewController.swift */,
+				F35E858A1E704D6C000D88DE /* AddChildViewController.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		F35E858F1E7AD873000D88DE /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F34C76F51E6DAEB5008600DA /* HomeTableViewCell.swift */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		F35E85901E7AD894000D88DE /* Data Model */ = {
+			isa = PBXGroup;
+			children = (
+				F35E858C1E7AD835000D88DE /* ChildData.swift */,
+				F35E85911E7C32D8000D88DE /* CoreDataModel.swift */,
+			);
+			name = "Data Model";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -149,6 +179,8 @@
 				F34C76F81E6DB977008600DA /* HomeViewController.swift in Sources */,
 				F34C76E71E675911008600DA /* TheChart.xcdatamodeld in Sources */,
 				F34C76F61E6DAEB5008600DA /* HomeTableViewCell.swift in Sources */,
+				F35E85921E7C32D8000D88DE /* CoreDataModel.swift in Sources */,
+				F35E858D1E7AD835000D88DE /* ChildData.swift in Sources */,
 				F34C76DF1E675911008600DA /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

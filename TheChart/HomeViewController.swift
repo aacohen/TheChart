@@ -10,9 +10,11 @@ import UIKit
 
 class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    let sharedChildModel = CoreDataModel.shared
     var tableView: UITableView  =   UITableView()
     var children = [Child]()
-    let defaultChild = Child(name: "Add Child", age: "")
+    
+//    let defaultChild = Child(name: "Add Child", age: "")
     //    let cellReuseIdendifier = "cell"
     
     
@@ -26,13 +28,15 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
 //        self.tableView.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0)
         // Do any additional setup after loading the view.
         
-        let childOne = Child(name: "Gabrielle", age: "2")
-        let childTwo = Child(name: "Ellen", age: "12")
-        
-        children.append(childOne)
-        children.append(childTwo)
-        
+        let defaultChild = Child(context: sharedChildModel.context)
+        defaultChild.name = "Add Child"
+        defaultChild.age = ""
+        sharedChildModel.saveContext()
+        children.append(defaultChild)
+        tableView.reloadData()
     }
+    
+   
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -96,16 +100,3 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
 
 }
 
-class Child {
-    
-    var name = String()
-    var age = String()
-    //var image = UIImage()
-    
-    init(name:String, age: String) {
-        _ = self.name
-        _ = self.age
-        
-    }
-    
-}

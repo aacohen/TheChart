@@ -7,8 +7,11 @@
 //
 
 import UIKit
+import CoreData
 
 class AddChildViewController: UIViewController {
+    
+    
     
     let childNameLabel = UILabel()
     let childAgeLabel = UILabel()
@@ -94,8 +97,13 @@ class AddChildViewController: UIViewController {
         //validate fields?
         guard let name = nameTextField.text, let age = ageTextField.text else { return }
         
-        let child = Child(name: name, age: age)
-        childArray.append(child)
+        let newChild = Child(context: CoreDataModel.shared.context)
+        newChild.name = name
+        newChild.age = age
+        
+        CoreDataModel.shared.saveContext()
+        
+        self.navigationController?.popViewController(animated: true)
      //add to core data
         print(childArray)
         print("submit button pressed")
