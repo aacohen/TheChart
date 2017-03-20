@@ -10,8 +10,7 @@ import UIKit
 import CoreData
 
 class AddChildViewController: UIViewController {
-    
-    
+
     
     let childNameLabel = UILabel()
     let childAgeLabel = UILabel()
@@ -102,9 +101,10 @@ class AddChildViewController: UIViewController {
         newChild.age = age
         
         CoreDataModel.shared.saveContext()
+        CoreDataModel.shared.children.append(newChild)
         
         self.navigationController?.popViewController(animated: true)
-     //add to core data
+     
         print(childArray)
         print("submit button pressed")
     }

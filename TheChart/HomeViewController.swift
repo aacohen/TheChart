@@ -11,10 +11,11 @@ import UIKit
 class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     let sharedChildModel = CoreDataModel.shared
-    var tableView: UITableView  =   UITableView()
-    var children = [Child]()
     
-//    let defaultChild = Child(name: "Add Child", age: "")
+    var tableView: UITableView  =   UITableView()
+    
+    
+    //    let defaultChild = Child(name: "Add Child", age: "")
     //    let cellReuseIdendifier = "cell"
     
     
@@ -25,18 +26,23 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         tableView.dataSource    =   self
         tableView.register(HomeTableViewCell.self, forCellReuseIdentifier: "cell")
         self.view.addSubview(self.tableView)
-//        self.tableView.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0)
+        //        self.tableView.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0)
         // Do any additional setup after loading the view.
         
         let defaultChild = Child(context: sharedChildModel.context)
         defaultChild.name = "Add Child"
         defaultChild.age = ""
         sharedChildModel.saveContext()
-        children.append(defaultChild)
+        sharedChildModel.children.append(defaultChild)
+        sharedChildModel.fetch()
         tableView.reloadData()
     }
     
-   
+    override func viewWillAppear(_ animated: Bool) {
+        tableView.reloadData()
+    }
+    
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -52,7 +58,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return children.count
+        
+        return sharedChildModel.children.count
     }
     
     
@@ -60,19 +67,27 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! HomeTableViewCell
         
-        if indexPath.row == 0 {
-            // add child cell
-            cell.nameLabel.text = "Add Child"
-            cell.profileImage.backgroundColor = UIColor.darkGray
-            return cell
+        //        if indexPath.row == 0 {
+        //            // add child cell
+        //            cell.nameLabel.text = "Add Child"
+        //            cell.profileImage.backgroundColor = UIColor.darkGray
+        //            return cell
+        //        }
+        
+        //        guard let name = sharedChildModel.children[indexPath.row].name else { return }
+        //        guard let age = sharedChildModel.children[indexPath.row].age else { return }
+        
+        if let name = sharedChildModel.children[indexPath.row].name {
+            cell.nameLabel.text = "Name: \(name)"
         }
         
-        //            cell.nameLabel.text = "Name: Hello"
-        cell.nameLabel.text = "Name: \(children[indexPath.row].name)"
+        if let age = sharedChildModel.children[indexPath.row].age {
+            cell.ageLabel.text = "Age: \(age)"
+        }
         
-        //            print("\(children[1].name)")
-        cell.ageLabel.text = "Age: 2"
-        //            cell.ageLabel.text = children[indexPath.row].age
+        print("\(sharedChildModel.children[0].name)")
+        
+        
         // cell.profileImage.image = children[indexPath.row].image
         
         cell.backgroundColor = UIColor.blue
@@ -87,7 +102,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             
         }
     }
-   
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UIScreen.main.bounds.size.height * 0.2
     }
@@ -95,8 +110,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     // MARK: - PUSH TO ADD CHILD VIEW CONTROLLER
     func goToAddChild(){
         let destVC = AddChildViewController()
-            navigationController?.pushViewController(destVC, animated: true)
+        navigationController?.pushViewController(destVC, animated: true)
     }
-
+    
 }
 

@@ -13,6 +13,7 @@ import CoreData
 final class CoreDataModel {
     
     static let shared = CoreDataModel()
+    var children = [Child]()
     
     private static let name = "TheChart"
     
