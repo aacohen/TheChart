@@ -107,6 +107,22 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         return UIScreen.main.bounds.size.height * 0.2
     }
     
+    
+    // MARK: - SWIPE TO DELETE CELL
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if (editingStyle == UITableViewCellEditingStyle.delete) {
+            // delete data and row
+            sharedChildModel.children.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+            //delete from core data
+            sharedChildModel.saveContext()
+        }
+    }
+    
     // MARK: - PUSH TO ADD CHILD VIEW CONTROLLER
     func goToAddChild(){
         let destVC = AddChildViewController()

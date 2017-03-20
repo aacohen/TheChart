@@ -48,7 +48,8 @@ final class CoreDataModel {
         
         let request = NSFetchRequest<Child>(entityName: "Child")
         
-        do { let children = try context.fetch(request)
+        do { let childs = try context.fetch(request)
+            children = childs
             
         } catch {
             print ("error")
