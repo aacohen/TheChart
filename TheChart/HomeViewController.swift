@@ -29,11 +29,11 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         //        self.tableView.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0)
         // Do any additional setup after loading the view.
         
-        let defaultChild = Child(context: sharedChildModel.context)
-        defaultChild.name = "Add Child"
-        defaultChild.age = ""
-        sharedChildModel.saveContext()
-        sharedChildModel.children.append(defaultChild)
+//        let defaultChild = Child(context: sharedChildModel.context)
+//        defaultChild.name = "Add Child"
+//        defaultChild.age = ""
+//        sharedChildModel.saveContext()
+//        sharedChildModel.children.append(defaultChild)
         sharedChildModel.fetch()
         tableView.reloadData()
     }
@@ -67,12 +67,12 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! HomeTableViewCell
         
-        //        if indexPath.row == 0 {
-        //            // add child cell
-        //            cell.nameLabel.text = "Add Child"
-        //            cell.profileImage.backgroundColor = UIColor.darkGray
-        //            return cell
-        //        }
+                if indexPath.row == 0 {
+                    // add child cell
+                    cell.nameLabel.text = "Add Child"
+                    cell.profileImage.backgroundColor = UIColor.darkGray
+                    return cell
+                }
         
         //        guard let name = sharedChildModel.children[indexPath.row].name else { return }
         //        guard let age = sharedChildModel.children[indexPath.row].age else { return }
@@ -114,12 +114,11 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if (editingStyle == UITableViewCellEditingStyle.delete) {
+        if (editingStyle == UITableViewCellEditingStyle.delete) && indexPath.row != 0 {
             // delete data and row
-            sharedChildModel.children.remove(at: indexPath.row)
+            sharedChildModel.delete(indexPath: indexPath)
             tableView.deleteRows(at: [indexPath], with: .fade)
-            //delete from core data
-            sharedChildModel.saveContext()
+            tableView.reloadData()
         }
     }
     

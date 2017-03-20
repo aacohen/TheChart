@@ -57,6 +57,16 @@ final class CoreDataModel {
         
     }
     
+    func delete(indexPath: IndexPath) {
+        
+        context.delete(children[indexPath.row] as NSManagedObject)
+        children.remove(at: indexPath.row)
+        saveContext()
+
+        
+       
+    }
+    
 }
 
 extension Child {
