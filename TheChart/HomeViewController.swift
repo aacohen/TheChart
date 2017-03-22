@@ -99,7 +99,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         if indexPath.row == 0 {
             goToAddChild()
-            
+        } else {
+            goToChildProfile()
         }
     }
     
@@ -125,6 +126,11 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     // MARK: - PUSH TO ADD CHILD VIEW CONTROLLER
     func goToAddChild(){
         let destVC = AddChildViewController()
+        navigationController?.pushViewController(destVC, animated: true)
+    }
+    
+    func goToChildProfile(){
+        let destVC = ChildProfileViewController()
         navigationController?.pushViewController(destVC, animated: true)
     }
     

@@ -62,9 +62,6 @@ final class CoreDataModel {
         context.delete(children[indexPath.row] as NSManagedObject)
         children.remove(at: indexPath.row)
         saveContext()
-
-        
-       
     }
     
 }
