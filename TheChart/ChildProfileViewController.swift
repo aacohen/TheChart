@@ -9,7 +9,7 @@
 import UIKit
 
 class ChildProfileViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-
+    
     
     var tableView: UITableView  =   UITableView()
     
@@ -20,14 +20,21 @@ class ChildProfileViewController: UIViewController, UITableViewDelegate, UITable
         tableView.delegate      =   self
         tableView.dataSource    =   self
         self.view.addSubview(self.tableView)
-        tableView.register(ChildProfileHeaderView.self, forHeaderFooterViewReuseIdentifier: "header")
-        tableView.register(ChildProfileTableViewCell.self, forCellReuseIdentifier: "profileCell")
         
+        tableView.register(ChildProfileTableViewCell.self, forCellReuseIdentifier: "profileCell")
 
-
-        // Do any additional setup after loading the view.
+        
+        let headerView = UIView()
+        headerView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: (view.frame.height*0.2))
+        headerView.backgroundColor = UIColor.orange
+        self.view.addSubview(headerView)
+        
+        
+        
+        
+       
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -51,19 +58,12 @@ class ChildProfileViewController: UIViewController, UITableViewDelegate, UITable
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "profileCell", for: indexPath) as! ChildProfileTableViewCell
         
+        cell.backgroundColor = UIColor.yellow
         
         return cell
     }
     
-    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        
-        // Dequeue with the reuse identifier
-        let headerCell = self.tableView.dequeueReusableHeaderFooterView(withIdentifier: "header")
-        let header = headerCell as! ChildProfileHeaderView
-        
-        return header
-    }
-    /*
+        /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation

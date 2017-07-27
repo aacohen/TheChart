@@ -69,6 +69,6 @@ final class CoreDataModel {
 extension Child {
     
     public override var description: String {
-        return "Name: \(name), Age: \(age)"
+        return "Name: \(String(describing: name)), Age: \(String(describing: age))"
     }
 }

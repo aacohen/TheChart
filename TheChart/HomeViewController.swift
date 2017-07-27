@@ -12,11 +12,12 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     let sharedChildModel = CoreDataModel.shared
     
+    let reuseIdentifier = "cell"
     var tableView: UITableView  =   UITableView()
     
     
-    //    let defaultChild = Child(name: "Add Child", age: "")
-    //    let cellReuseIdendifier = "cell"
+//    let defaultChild = Child(name: "Add Child", age: "")
+//      let cellReuseIdendifier = "cell"
     
     
     override func viewDidLoad() {
@@ -26,14 +27,14 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         tableView.dataSource    =   self
         tableView.register(HomeTableViewCell.self, forCellReuseIdentifier: "cell")
         self.view.addSubview(self.tableView)
-        //        self.tableView.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0)
-        // Do any additional setup after loading the view.
+//                self.tableView.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0)
         
-//        let defaultChild = Child(context: sharedChildModel.context)
-//        defaultChild.name = "Add Child"
-//        defaultChild.age = ""
-//        sharedChildModel.saveContext()
-//        sharedChildModel.children.append(defaultChild)
+        
+        let defaultChild = Child(context: sharedChildModel.context)
+        defaultChild.name = "Add Child"
+        defaultChild.age = ""
+        sharedChildModel.saveContext()
+        sharedChildModel.children.append(defaultChild)
         sharedChildModel.fetch()
         tableView.reloadData()
     }
@@ -52,12 +53,11 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     //     MARK: - Table view data source
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
+        
         return 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         
         return sharedChildModel.children.count
     }
@@ -65,15 +65,15 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! HomeTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+            as! HomeTableViewCell
         
-                if indexPath.row == 0 {
-                    // add child cell
-                    cell.nameLabel.text = "Add Child"
-                    cell.profileImage.backgroundColor = UIColor.darkGray
-                    return cell
-                }
-        
+//                if indexPath.row == 0 {
+//                    cell.nameLabel.text = "Add Child"
+//                    cell.profileImage.backgroundColor = UIColor.darkGray
+//                    return cell
+//                }
+//        
         //        guard let name = sharedChildModel.children[indexPath.row].name else { return }
         //        guard let age = sharedChildModel.children[indexPath.row].age else { return }
         
@@ -85,10 +85,11 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             cell.ageLabel.text = "Age: \(age)"
         }
         
-        print("\(sharedChildModel.children[0].name)")
+        
+        print("\(String(describing: sharedChildModel.children[0].name))")
         
         
-        // cell.profileImage.image = children[indexPath.row].image
+         cell.profileImage.image = UIImage(named: "Gabrielle")
         
         cell.backgroundColor = UIColor.blue
         

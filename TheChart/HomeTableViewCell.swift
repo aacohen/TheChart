@@ -10,6 +10,7 @@ import UIKit
 
 class HomeTableViewCell: UITableViewCell {
 
+    
 
     var profileImage = UIImageView()
     var nameLabel = UILabel ()
@@ -37,7 +38,7 @@ class HomeTableViewCell: UITableViewCell {
     
     func layoutElements() {
         
-
+        
         self.contentView.addSubview(nameLabel)
         nameLabel.translatesAutoresizingMaskIntoConstraints = false
         nameLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true

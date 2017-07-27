@@ -15,6 +15,8 @@ class AddChildViewController: UIViewController {
     let childNameLabel = UILabel()
     let childAgeLabel = UILabel()
     let childImageLabel = UILabel()
+    let childChooseImageButton = UIButton()
+    var imageView = UIImageView()
     let nameTextField = UITextField()
     let ageTextField = UITextField()
     
@@ -70,7 +72,6 @@ class AddChildViewController: UIViewController {
         nameTextField.textAlignment = .center
         nameTextField.backgroundColor = UIColor.gray
         
-        
         view.addSubview(ageTextField)
         ageTextField.translatesAutoresizingMaskIntoConstraints = false
         ageTextField.leadingAnchor.constraint(equalTo: childAgeLabel.trailingAnchor, constant: 20).isActive = true
@@ -78,6 +79,14 @@ class AddChildViewController: UIViewController {
         ageTextField.placeholder = "Age"
         ageTextField.textAlignment = .center
         ageTextField.backgroundColor = UIColor.gray
+        
+        view.addSubview(childChooseImageButton)
+        childChooseImageButton.translatesAutoresizingMaskIntoConstraints = false
+        childChooseImageButton.leadingAnchor.constraint(equalTo: childImageLabel.trailingAnchor, constant: 20).isActive = true
+        childChooseImageButton.centerYAnchor.constraint(equalTo: childImageLabel.centerYAnchor).isActive = true
+        childChooseImageButton.setTitle("Choose Profile Image", for: .normal)
+        childChooseImageButton.addSubview(imageView)
+        
         
         
         view.addSubview(submitButton)
@@ -90,6 +99,12 @@ class AddChildViewController: UIViewController {
         submitButton.setTitle("Submit", for: .normal)
         submitButton.backgroundColor = UIColor.orange
         
+    }
+    
+    func chooseImageButtonPressed() {
+        //view pops up
+        //chosen image name is stored in "imageName" then put in var "image View"
+        //save in core data
     }
     
     func submitButtonPressed() {

@@ -17,6 +17,8 @@
 		F35E858B1E704D6C000D88DE /* AddChildViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35E858A1E704D6C000D88DE /* AddChildViewController.swift */; };
 		F35E858D1E7AD835000D88DE /* ChildData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35E858C1E7AD835000D88DE /* ChildData.swift */; };
 		F35E85921E7C32D8000D88DE /* CoreDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35E85911E7C32D8000D88DE /* CoreDataModel.swift */; };
+		F35E85941E804E1C000D88DE /* ChildProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35E85931E804E1C000D88DE /* ChildProfileViewController.swift */; };
+		F3C2B91E1E82D0ED00F66F9C /* ChildProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C2B91D1E82D0ED00F66F9C /* ChildProfileTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,8 @@
 		F35E858A1E704D6C000D88DE /* AddChildViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddChildViewController.swift; sourceTree = "<group>"; };
 		F35E858C1E7AD835000D88DE /* ChildData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChildData.swift; sourceTree = "<group>"; };
 		F35E85911E7C32D8000D88DE /* CoreDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataModel.swift; sourceTree = "<group>"; };
+		F35E85931E804E1C000D88DE /* ChildProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChildProfileViewController.swift; sourceTree = "<group>"; };
+		F3C2B91D1E82D0ED00F66F9C /* ChildProfileTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChildProfileTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +86,7 @@
 			children = (
 				F34C76F71E6DB977008600DA /* HomeViewController.swift */,
 				F35E858A1E704D6C000D88DE /* AddChildViewController.swift */,
+				F35E85931E804E1C000D88DE /* ChildProfileViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -90,6 +95,7 @@
 			isa = PBXGroup;
 			children = (
 				F34C76F51E6DAEB5008600DA /* HomeTableViewCell.swift */,
+				F3C2B91D1E82D0ED00F66F9C /* ChildProfileTableViewCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -130,7 +136,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0810;
-				LastUpgradeCheck = 0810;
+				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = "Ariela Cohen";
 				TargetAttributes = {
 					F34C76DA1E675911008600DA = {
@@ -179,8 +185,10 @@
 				F34C76F81E6DB977008600DA /* HomeViewController.swift in Sources */,
 				F34C76E71E675911008600DA /* TheChart.xcdatamodeld in Sources */,
 				F34C76F61E6DAEB5008600DA /* HomeTableViewCell.swift in Sources */,
+				F3C2B91E1E82D0ED00F66F9C /* ChildProfileTableViewCell.swift in Sources */,
 				F35E85921E7C32D8000D88DE /* CoreDataModel.swift in Sources */,
 				F35E858D1E7AD835000D88DE /* ChildData.swift in Sources */,
+				F35E85941E804E1C000D88DE /* ChildProfileViewController.swift in Sources */,
 				F34C76DF1E675911008600DA /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -225,6 +233,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -275,6 +284,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
