@@ -11,7 +11,7 @@ import CoreData
 
 class AddChildViewController: UIViewController {
 
-    var profileImageView = ProfileImageView()
+    var profileImageView: ProfileImageView!
     let childNameLabel = UILabel()
     let childAgeLabel = UILabel()
     let childImageLabel = UILabel()
@@ -30,6 +30,7 @@ class AddChildViewController: UIViewController {
         setupView()
         view.backgroundColor = UIColor.blue
         setupView()
+        
         
         // Do any additional setup after loading the view.
     }
@@ -94,7 +95,6 @@ class AddChildViewController: UIViewController {
         childChooseImageButton.addSubview(imageView)
         
         
-        
         view.addSubview(submitButton)
         submitButton.addTarget(self, action: #selector(submitButtonPressed), for: .touchUpInside)
         submitButton.translatesAutoresizingMaskIntoConstraints = false
@@ -105,17 +105,21 @@ class AddChildViewController: UIViewController {
         submitButton.setTitle("Submit", for: .normal)
         submitButton.backgroundColor = UIColor.orange
         
-        profileImageView = ProfileImageView(frame: self.view.frame)
+    
+        profileImageView = ProfileImageView()
         view.addSubview(profileImageView)
+        profileImageView.translatesAutoresizingMaskIntoConstraints = false
         profileImageView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
         profileImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         profileImageView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.5).isActive = true
-        profileImageView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.25).isActive = true
+        profileImageView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.2).isActive = true
         profileImageView.isHidden = true
+        
     }
     
     func chooseImageButtonPressed() {
         profileImageView.isHidden = false
+        print ("Choose image button pressed")
         //unhide collection view
         //chosen image name is stored in "imageName" then put in var "image View"
         //save in core data

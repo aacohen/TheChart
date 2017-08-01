@@ -20,6 +20,7 @@
 		F35E85941E804E1C000D88DE /* ChildProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35E85931E804E1C000D88DE /* ChildProfileViewController.swift */; };
 		F3C2B91E1E82D0ED00F66F9C /* ChildProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C2B91D1E82D0ED00F66F9C /* ChildProfileTableViewCell.swift */; };
 		F3EB1B511F30091300EFD14C /* ProfileImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EB1B501F30091300EFD14C /* ProfileImageView.swift */; };
+		F3EB1B551F30C7A000EFD14C /* ProfileImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EB1B541F30C7A000EFD14C /* ProfileImageCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		F35E85931E804E1C000D88DE /* ChildProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChildProfileViewController.swift; sourceTree = "<group>"; };
 		F3C2B91D1E82D0ED00F66F9C /* ChildProfileTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChildProfileTableViewCell.swift; sourceTree = "<group>"; };
 		F3EB1B501F30091300EFD14C /* ProfileImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileImageView.swift; sourceTree = "<group>"; };
+		F3EB1B541F30C7A000EFD14C /* ProfileImageCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileImageCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,7 @@
 				F34C76F51E6DAEB5008600DA /* HomeTableViewCell.swift */,
 				F3C2B91D1E82D0ED00F66F9C /* ChildProfileTableViewCell.swift */,
 				F3EB1B501F30091300EFD14C /* ProfileImageView.swift */,
+				F3EB1B541F30C7A000EFD14C /* ProfileImageCollectionViewCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -187,6 +190,7 @@
 				F35E858B1E704D6C000D88DE /* AddChildViewController.swift in Sources */,
 				F34C76F81E6DB977008600DA /* HomeViewController.swift in Sources */,
 				F3EB1B511F30091300EFD14C /* ProfileImageView.swift in Sources */,
+				F3EB1B551F30C7A000EFD14C /* ProfileImageCollectionViewCell.swift in Sources */,
 				F34C76E71E675911008600DA /* TheChart.xcdatamodeld in Sources */,
 				F34C76F61E6DAEB5008600DA /* HomeTableViewCell.swift in Sources */,
 				F3C2B91E1E82D0ED00F66F9C /* ChildProfileTableViewCell.swift in Sources */,
