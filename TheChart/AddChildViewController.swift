@@ -15,6 +15,7 @@ class AddChildViewController: UIViewController {
     let childNameLabel = UILabel()
     let childAgeLabel = UILabel()
     let childImageLabel = UILabel()
+    var imageDisplayView = UIImageView()
     let childChooseImageButton = UIButton()
     var imageView = UIImageView()
     let nameTextField = UITextField()
@@ -62,13 +63,23 @@ class AddChildViewController: UIViewController {
         childAgeLabel.text = "Child Age:"
         childAgeLabel.backgroundColor = UIColor.orange
         
-  
-        view.addSubview(childImageLabel)
-        childImageLabel.translatesAutoresizingMaskIntoConstraints = false
-        childImageLabel.centerXAnchor.constraint(equalTo: childNameLabel.centerXAnchor).isActive = true
-        childImageLabel.centerYAnchor.constraint(equalTo: childAgeLabel.centerYAnchor, constant: 40).isActive = true
-        childImageLabel.text = "Child Image"
-        childImageLabel.backgroundColor = UIColor.orange
+//        imageDisplayView.image = #imageLiteral(resourceName: "Gabrielle")
+       view.addSubview(imageDisplayView)
+        imageDisplayView.translatesAutoresizingMaskIntoConstraints = false
+        imageDisplayView.centerXAnchor.constraint(equalTo: childNameLabel.centerXAnchor).isActive = true
+        imageDisplayView.centerYAnchor.constraint(equalTo: childAgeLabel.centerYAnchor, constant: 40).isActive = true
+        imageDisplayView.widthAnchor.constraint(equalToConstant: 20)
+        imageDisplayView.heightAnchor.constraint(equalToConstant: 20)
+        imageDisplayView.backgroundColor = UIColor.black
+    
+        
+        
+//        view.addSubview(childImageLabel)
+//        childImageLabel.translatesAutoresizingMaskIntoConstraints = false
+//        childImageLabel.centerXAnchor.constraint(equalTo: childNameLabel.centerXAnchor).isActive = true
+//        childImageLabel.centerYAnchor.constraint(equalTo: childAgeLabel.centerYAnchor, constant: 40).isActive = true
+//        childImageLabel.text = "Child Image"
+//        childImageLabel.backgroundColor = UIColor.orange
         
         view.addSubview(nameTextField)
         nameTextField.translatesAutoresizingMaskIntoConstraints = false
@@ -89,8 +100,8 @@ class AddChildViewController: UIViewController {
         view.addSubview(childChooseImageButton)
         childChooseImageButton.addTarget(self, action: #selector(chooseImageButtonPressed), for: .touchUpInside)
         childChooseImageButton.translatesAutoresizingMaskIntoConstraints = false
-        childChooseImageButton.leadingAnchor.constraint(equalTo: childImageLabel.trailingAnchor, constant: 20).isActive = true
-        childChooseImageButton.centerYAnchor.constraint(equalTo: childImageLabel.centerYAnchor).isActive = true
+        childChooseImageButton.leadingAnchor.constraint(equalTo: imageDisplayView.trailingAnchor, constant: 20).isActive = true
+        childChooseImageButton.centerYAnchor.constraint(equalTo: imageDisplayView.centerYAnchor).isActive = true
         childChooseImageButton.setTitle("Choose Profile Image", for: .normal)
         childChooseImageButton.addSubview(imageView)
         
@@ -98,7 +109,7 @@ class AddChildViewController: UIViewController {
         view.addSubview(submitButton)
         submitButton.addTarget(self, action: #selector(submitButtonPressed), for: .touchUpInside)
         submitButton.translatesAutoresizingMaskIntoConstraints = false
-        submitButton.centerYAnchor.constraint(equalTo: childImageLabel.centerYAnchor, constant: 50).isActive = true
+        submitButton.centerYAnchor.constraint(equalTo: imageDisplayView.centerYAnchor, constant: 50).isActive = true
         submitButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         submitButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.25).isActive = true
         submitButton.heightAnchor.constraint(equalTo: submitButton.widthAnchor, multiplier: 0.25).isActive = true
