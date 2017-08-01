@@ -11,7 +11,7 @@ import CoreData
 
 class AddChildViewController: UIViewController {
 
-    
+    var profileImageView = ProfileImageView()
     let childNameLabel = UILabel()
     let childAgeLabel = UILabel()
     let childImageLabel = UILabel()
@@ -32,6 +32,11 @@ class AddChildViewController: UIViewController {
         setupView()
         
         // Do any additional setup after loading the view.
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -81,6 +86,7 @@ class AddChildViewController: UIViewController {
         ageTextField.backgroundColor = UIColor.gray
         
         view.addSubview(childChooseImageButton)
+        childChooseImageButton.addTarget(self, action: #selector(chooseImageButtonPressed), for: .touchUpInside)
         childChooseImageButton.translatesAutoresizingMaskIntoConstraints = false
         childChooseImageButton.leadingAnchor.constraint(equalTo: childImageLabel.trailingAnchor, constant: 20).isActive = true
         childChooseImageButton.centerYAnchor.constraint(equalTo: childImageLabel.centerYAnchor).isActive = true
@@ -99,13 +105,24 @@ class AddChildViewController: UIViewController {
         submitButton.setTitle("Submit", for: .normal)
         submitButton.backgroundColor = UIColor.orange
         
+        profileImageView = ProfileImageView(frame: self.view.frame)
+        view.addSubview(profileImageView)
+        profileImageView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        profileImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        profileImageView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.5).isActive = true
+        profileImageView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.25).isActive = true
+        profileImageView.isHidden = true
     }
     
     func chooseImageButtonPressed() {
-        //view pops up
+        profileImageView.isHidden = false
+        //unhide collection view
         //chosen image name is stored in "imageName" then put in var "image View"
         //save in core data
-    }
+        }
+
+    
+   // MARK: - Navigation
     
     func submitButtonPressed() {
         //validate fields?
@@ -124,14 +141,5 @@ class AddChildViewController: UIViewController {
         print("submit button pressed")
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
