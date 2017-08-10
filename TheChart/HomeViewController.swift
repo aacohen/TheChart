@@ -15,7 +15,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     let reuseIdentifier = "cell"
     var tableView: UITableView  =   UITableView()
     
-    
+
 //    let defaultChild = Child(name: "Add Child", age: "")
 //      let cellReuseIdendifier = "cell"
     
@@ -30,11 +30,11 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
 //                self.tableView.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0)
         
         
-        let defaultChild = Child(context: sharedChildModel.context)
-        defaultChild.name = "Add Child"
-        defaultChild.age = ""
-        sharedChildModel.saveContext()
-        sharedChildModel.children.append(defaultChild)
+//        let defaultChild = Child(context: sharedChildModel.context)
+//        defaultChild.name = "Add Child"
+//        defaultChild.age = ""
+//        sharedChildModel.saveContext()
+//        sharedChildModel.children.append(defaultChild)
         sharedChildModel.fetch()
         tableView.reloadData()
     }

@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class AddChildViewController: UIViewController {
+class AddChildViewController: UIViewController, UICollectionViewDelegate {
 
     var profileImageView: ProfileImageView!
     let childNameLabel = UILabel()
@@ -68,18 +68,9 @@ class AddChildViewController: UIViewController {
         imageDisplayView.translatesAutoresizingMaskIntoConstraints = false
         imageDisplayView.centerXAnchor.constraint(equalTo: childNameLabel.centerXAnchor).isActive = true
         imageDisplayView.centerYAnchor.constraint(equalTo: childAgeLabel.centerYAnchor, constant: 40).isActive = true
-        imageDisplayView.widthAnchor.constraint(equalToConstant: 20)
-        imageDisplayView.heightAnchor.constraint(equalToConstant: 20)
+        imageDisplayView.widthAnchor.constraint(equalToConstant: 20).isActive = true
+        imageDisplayView.heightAnchor.constraint(equalToConstant: 20).isActive = true
         imageDisplayView.backgroundColor = UIColor.black
-    
-        
-        
-//        view.addSubview(childImageLabel)
-//        childImageLabel.translatesAutoresizingMaskIntoConstraints = false
-//        childImageLabel.centerXAnchor.constraint(equalTo: childNameLabel.centerXAnchor).isActive = true
-//        childImageLabel.centerYAnchor.constraint(equalTo: childAgeLabel.centerYAnchor, constant: 40).isActive = true
-//        childImageLabel.text = "Child Image"
-//        childImageLabel.backgroundColor = UIColor.orange
         
         view.addSubview(nameTextField)
         nameTextField.translatesAutoresizingMaskIntoConstraints = false
@@ -127,14 +118,6 @@ class AddChildViewController: UIViewController {
         profileImageView.isHidden = true
         
     }
-    
-    func chooseImageButtonPressed() {
-        profileImageView.isHidden = false
-        print ("Choose image button pressed")
-        //unhide collection view
-        //chosen image name is stored in "imageName" then put in var "image View"
-        //save in core data
-        }
 
     
    // MARK: - Navigation
@@ -155,6 +138,13 @@ class AddChildViewController: UIViewController {
         print(childArray)
         print("submit button pressed")
     }
-
+    
+    func chooseImageButtonPressed() {
+        profileImageView.isHidden = false
+        print ("Choose image button pressed")
+        //unhide collection view
+        //chosen image name is stored in "imageName" then put in var "image View"
+        //save in core data
+    }
 
 }
