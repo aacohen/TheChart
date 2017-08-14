@@ -13,6 +13,8 @@ class ChildProfileViewController: UIViewController, UITableViewDelegate, UITable
     
     var tableView: UITableView  =   UITableView()
     
+
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,8 +30,20 @@ class ChildProfileViewController: UIViewController, UITableViewDelegate, UITable
         headerView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: (view.frame.height*0.2))
         headerView.backgroundColor = UIColor.orange
         self.view.addSubview(headerView)
- 
-       
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+         AppUtility.lockOrientation(.landscape, andRotateTo: .landscapeRight)
+        
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        AppUtility.lockOrientation(.portrait, andRotateTo: .portrait)
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -71,3 +85,23 @@ class ChildProfileViewController: UIViewController, UITableViewDelegate, UITable
     */
 
 }
+
+struct AppUtility {
+    
+    static func lockOrientation(_ orientation: UIInterfaceOrientationMask) {
+        
+        if let delegate = UIApplication.shared.delegate as? AppDelegate {
+            delegate.orientationLock = orientation
+        }
+    }
+    
+    /// OPTIONAL Added method to adjust lock and rotate to the desired orientation
+    static func lockOrientation(_ orientation: UIInterfaceOrientationMask, andRotateTo rotateOrientation:UIInterfaceOrientation) {
+        
+        self.lockOrientation(orientation)
+        
+        UIDevice.current.setValue(rotateOrientation.rawValue, forKey: "orientation")
+    }
+    
+}
+
