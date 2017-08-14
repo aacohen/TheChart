@@ -53,12 +53,6 @@ class ProfileImageView: UICollectionView, UICollectionViewDelegate, UICollection
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        //        let paddingSpace = 20.0
-        //        let availableWidth = self.frame.width - 20.0
-        //        print ("frame width: \(self.frame.width)")
-        //        print ("available Width = \(availableWidth)")
-        //        let widthPerItem = availableWidth / 3.0
-        //        print ("widthPerItem = \(widthPerItem)")
         
         
         let paddingSpace = sectionInsets.left * (itemsPerRow + 1)

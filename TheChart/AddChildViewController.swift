@@ -31,6 +31,7 @@ class AddChildViewController: UIViewController, UICollectionViewDelegate {
         setupView()
         view.backgroundColor = UIColor.blue
         setupView()
+    
         
         
         // Do any additional setup after loading the view.
@@ -71,7 +72,7 @@ class AddChildViewController: UIViewController, UICollectionViewDelegate {
         imageDisplayView.widthAnchor.constraint(equalToConstant: 20).isActive = true
         imageDisplayView.heightAnchor.constraint(equalToConstant: 20).isActive = true
         imageDisplayView.backgroundColor = UIColor.black
-        
+
         view.addSubview(nameTextField)
         nameTextField.translatesAutoresizingMaskIntoConstraints = false
         nameTextField.leadingAnchor.constraint(equalTo: childNameLabel.trailingAnchor, constant: 20).isActive = true
@@ -116,7 +117,22 @@ class AddChildViewController: UIViewController, UICollectionViewDelegate {
         profileImageView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.5).isActive = true
         profileImageView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.2).isActive = true
         profileImageView.isHidden = true
+    
         
+    }
+    
+    func setProfileImageView(){
+        if let image = imageDisplayView.image {
+            
+            imageDisplayView.image = profileImageView.selectedImage
+//            imageDisplayView.backgroundColor = UIColor.clear
+        
+        } else {
+            
+            print ("no profile image")
+            
+        }
+
     }
 
     
@@ -129,6 +145,8 @@ class AddChildViewController: UIViewController, UICollectionViewDelegate {
         let newChild = Child(context: CoreDataModel.shared.context)
         newChild.name = name
         newChild.age = age
+        let imageData =  UIImagePNGRepresentation(profileImageView.selectedImage)
+        newChild.image = imageData as! NSData
         
         CoreDataModel.shared.saveContext()
         CoreDataModel.shared.children.append(newChild)

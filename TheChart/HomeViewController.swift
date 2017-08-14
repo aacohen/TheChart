@@ -85,11 +85,15 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             cell.ageLabel.text = "Age: \(age)"
         }
         
+        if let imageData = sharedChildModel.children[indexPath.row].image {
+            let image = UIImage(data: imageData as Data)
+            cell.profileImage.image = image
+        }
+        
         
         print("\(String(describing: sharedChildModel.children[0].name))")
         
         
-         cell.profileImage.image = UIImage(named: "Gabrielle")
         
         cell.backgroundColor = UIColor.blue
         
