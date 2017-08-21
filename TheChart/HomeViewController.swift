@@ -27,7 +27,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         tableView.dataSource    =   self
         tableView.register(HomeTableViewCell.self, forCellReuseIdentifier: "cell")
         self.view.addSubview(self.tableView)
-//                self.tableView.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0)
+//        self.tableView.contentInset = UIEdgeInsets(top: 0, left: 70, bottom: 0, right: 70)
+        
         
         
 //        let defaultChild = Child(context: sharedChildModel.context)

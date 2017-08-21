@@ -12,12 +12,13 @@ class ChildProfileViewController: UIViewController, UITableViewDelegate, UITable
     
     
     var tableView: UITableView  =   UITableView()
-    
-
+    var headerView: UITableViewHeaderFooterView = UITableViewHeaderFooterView()
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+
         tableView = UITableView(frame: UIScreen.main.bounds, style: UITableViewStyle.plain)
         tableView.delegate      =   self
         tableView.dataSource    =   self
@@ -25,26 +26,23 @@ class ChildProfileViewController: UIViewController, UITableViewDelegate, UITable
         
         tableView.register(ChildProfileTableViewCell.self, forCellReuseIdentifier: "profileCell")
 
+        headerView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: (view.frame.height*0.3))
         
-        let headerView = UIView()
-        headerView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: (view.frame.height*0.2))
-        headerView.backgroundColor = UIColor.orange
-        self.view.addSubview(headerView)
+
+        tableView.register(ChildProfileHeaderView.self, forHeaderFooterViewReuseIdentifier: "headerView")
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-
-         AppUtility.lockOrientation(.landscape, andRotateTo: .landscapeRight)
         
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
+    override func viewWillDisappear(_ animated : Bool) {
         super.viewWillDisappear(animated)
         
-        AppUtility.lockOrientation(.portrait, andRotateTo: .portrait)
-        
     }
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -61,7 +59,7 @@ class ChildProfileViewController: UIViewController, UITableViewDelegate, UITable
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         
-        return 2
+        return 4
     }
     
     
@@ -72,6 +70,22 @@ class ChildProfileViewController: UIViewController, UITableViewDelegate, UITable
         cell.backgroundColor = UIColor.yellow
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        
+        let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: "headerView") as! ChildProfileHeaderView
+        
+        view.contentView.backgroundColor = UIColor.orange
+        
+        return view
+    }
+    
+    func tableView(_ tableView: UITableView,
+                   heightForHeaderInSection section: Int) -> CGFloat {
+        let height = view.frame.height * 0.2
+        
+        return height
     }
     
         /*
@@ -86,22 +100,9 @@ class ChildProfileViewController: UIViewController, UITableViewDelegate, UITable
 
 }
 
-struct AppUtility {
+class ChildProfileHeaderView: UITableViewHeaderFooterView {
     
-    static func lockOrientation(_ orientation: UIInterfaceOrientationMask) {
-        
-        if let delegate = UIApplication.shared.delegate as? AppDelegate {
-            delegate.orientationLock = orientation
-        }
-    }
-    
-    /// OPTIONAL Added method to adjust lock and rotate to the desired orientation
-    static func lockOrientation(_ orientation: UIInterfaceOrientationMask, andRotateTo rotateOrientation:UIInterfaceOrientation) {
-        
-        self.lockOrientation(orientation)
-        
-        UIDevice.current.setValue(rotateOrientation.rawValue, forKey: "orientation")
-    }
     
 }
+
 
