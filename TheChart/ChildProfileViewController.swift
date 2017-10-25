@@ -7,102 +7,63 @@
 //
 
 import UIKit
+import Charts
 
-class ChildProfileViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ChildProfileViewController: UIViewController {
     
-    
-    var tableView: UITableView  =   UITableView()
-    var headerView: UITableViewHeaderFooterView = UITableViewHeaderFooterView()
-    
+    var header: UIView = UIView()
+    var chart = BarChartView()
+    var nameLabel = UILabel()
+    var name = ""
+    var image = UIImage()
+    var age = Int()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-
-        tableView = UITableView(frame: UIScreen.main.bounds, style: UITableViewStyle.plain)
-        tableView.delegate      =   self
-        tableView.dataSource    =   self
-        self.view.addSubview(self.tableView)
-        
-        tableView.register(ChildProfileTableViewCell.self, forCellReuseIdentifier: "profileCell")
-
-        headerView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: (view.frame.height*0.3))
-        
-
-        tableView.register(ChildProfileHeaderView.self, forHeaderFooterViewReuseIdentifier: "headerView")
-        
+        setupView()
+        chart.noDataText = "Add behaviour to the chart."
     }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-    }
-    
-    override func viewWillDisappear(_ animated : Bool) {
-        super.viewWillDisappear(animated)
-        
-    }
-    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-    //     MARK: - Table view data source
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 1
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
+    func setupView() {
         
-        return 4
-    }
-    
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: "profileCell", for: indexPath) as! ChildProfileTableViewCell
-        
-        cell.backgroundColor = UIColor.yellow
-        
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        
-        let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: "headerView") as! ChildProfileHeaderView
-        
-        view.contentView.backgroundColor = UIColor.orange
-        
-        return view
-    }
-    
-    func tableView(_ tableView: UITableView,
-                   heightForHeaderInSection section: Int) -> CGFloat {
-        let height = view.frame.height * 0.2
-        
-        return height
-    }
-    
-        /*
-    // MARK: - Navigation
+        // Header View
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        self.view.addSubview(header)
+        header.translatesAutoresizingMaskIntoConstraints = false
+        header.widthAnchor.constraint(equalTo: self.view.widthAnchor).isActive = true
+        header.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 0.2).isActive = true
+        header.bottomAnchor.constraint(equalTo: self.view.centerYAnchor, constant: -75).isActive = true
+        header.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
+        header.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
+        header.backgroundColor = UIColor.orange
+        
+        header.addSubview(nameLabel)
+        nameLabel.translatesAutoresizingMaskIntoConstraints = false
+        nameLabel.centerYAnchor.constraint(equalTo: header.centerYAnchor).isActive = true
+        nameLabel.centerXAnchor.constraint(equalTo: header.centerXAnchor).isActive = true
+        nameLabel.widthAnchor.constraint(equalTo: header.widthAnchor, multiplier: 0.35).isActive = true
+        nameLabel.heightAnchor.constraint(equalTo: header.heightAnchor, multiplier: 0.25).isActive = true
+        nameLabel.text = name
+        nameLabel.textColor = UIColor.black
+        nameLabel.textAlignment = .center
+        nameLabel.backgroundColor = UIColor.clear
+        
+        
+        // Chart View
+        self.view.addSubview(chart)
+        chart.translatesAutoresizingMaskIntoConstraints = false
+        chart.topAnchor.constraint(equalTo: header.bottomAnchor).isActive = true
+        
+        chart.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
+        chart.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
+        chart.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
+        chart.backgroundColor = UIColor.white
+
     }
-    */
-
-}
-
-class ChildProfileHeaderView: UITableViewHeaderFooterView {
-    
     
 }
-
-

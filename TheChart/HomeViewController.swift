@@ -27,10 +27,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         tableView.dataSource    =   self
         tableView.register(HomeTableViewCell.self, forCellReuseIdentifier: "cell")
         self.view.addSubview(self.tableView)
-//        self.tableView.contentInset = UIEdgeInsets(top: 0, left: 70, bottom: 0, right: 70)
-        
-        
-        
+
 //        let defaultChild = Child(context: sharedChildModel.context)
 //        defaultChild.name = "Add Child"
 //        defaultChild.age = ""
@@ -106,7 +103,12 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         if indexPath.row == 0 {
             goToAddChild()
         } else {
-            goToChildProfile()
+            guard let name = sharedChildModel.children[indexPath.row].name, let imageData = sharedChildModel.children[indexPath.row].image else { return }
+            let age = sharedChildModel.children[indexPath.row].age
+            
+            guard let image = UIImage(data: imageData as Data) else {return}
+            goToChildProfile(name: name, image: image)
+            
         }
     }
     
@@ -135,8 +137,10 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         navigationController?.pushViewController(destVC, animated: true)
     }
     
-    func goToChildProfile(){
+    func goToChildProfile(name: String, image: UIImage){
         let destVC = ChildProfileViewController()
+        destVC.name = name
+        destVC.image = image
         navigationController?.pushViewController(destVC, animated: true)
     }
     
