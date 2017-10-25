@@ -14,6 +14,7 @@ class ChildProfileViewController: UIViewController {
     var header: UIView = UIView()
     var chart = BarChartView()
     var nameLabel = UILabel()
+    var imageView = UIImageView()
     var name = ""
     var image = UIImage()
     var age = Int()
@@ -53,6 +54,19 @@ class ChildProfileViewController: UIViewController {
         nameLabel.textAlignment = .center
         nameLabel.backgroundColor = UIColor.clear
         
+        header.addSubview(imageView)
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.topAnchor.constraint(equalTo: header.topAnchor, constant: 5).isActive = true
+        imageView.bottomAnchor.constraint(equalTo: header.bottomAnchor, constant: -5).isActive = true
+        imageView.widthAnchor.constraint(equalTo: header.widthAnchor, multiplier: 0.15).isActive = true
+        imageView.leadingAnchor.constraint(equalTo: header.leadingAnchor, constant: 50.0).isActive = true
+        imageView.backgroundColor = UIColor.red
+        imageView.layer.cornerRadius = 20
+        imageView.layer.borderWidth = 2
+        imageView.clipsToBounds = true
+        
+        imageView.image = image
+        
         
         // Chart View
         self.view.addSubview(chart)
@@ -63,7 +77,9 @@ class ChildProfileViewController: UIViewController {
         chart.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
         chart.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
         chart.backgroundColor = UIColor.white
-
+        
+        
+       
     }
     
 }

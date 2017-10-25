@@ -47,7 +47,7 @@ class HomeTableViewCell: UITableViewCell {
         nameLabel.heightAnchor.constraint(equalTo: contentView.heightAnchor, multiplier: 0.25).isActive = true
         nameLabel.textColor = UIColor.black
         nameLabel.textAlignment = .center
-        nameLabel.backgroundColor = UIColor.orange
+        
         
         self.contentView.addSubview(ageLabel)
         ageLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -57,14 +57,15 @@ class HomeTableViewCell: UITableViewCell {
         ageLabel.heightAnchor.constraint(equalTo: nameLabel.heightAnchor).isActive = true
         ageLabel.textColor = UIColor.black
         ageLabel.textAlignment = .center
-        ageLabel.backgroundColor = UIColor.yellow
+        
         
         self.contentView.addSubview(profileImage)
         profileImage.translatesAutoresizingMaskIntoConstraints = false
         profileImage.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 5).isActive = true
         profileImage.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -5).isActive = true
-        profileImage.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 0.25).isActive = true
-        profileImage.backgroundColor = UIColor.red
+        profileImage.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 0.15).isActive = true
+        profileImage.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 50.0).isActive = true
+        profileImage.backgroundColor = UIColor.clear
         profileImage.layer.cornerRadius = 20
         profileImage.layer.borderWidth = 2
 //        profileImage.layer.borderColor = CG
