@@ -18,6 +18,7 @@ class ChildProfileViewController: UIViewController {
     var name = ""
     var image = UIImage()
     var age = Int()
+    var addBehaviour = UIButton()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +29,12 @@ class ChildProfileViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func addBehaviourButtonPressed() {
+        let destVC = AddBehaviourViewController()
+       
+        navigationController?.pushViewController(destVC, animated: true)
     }
     
     func setupView() {
@@ -64,9 +71,17 @@ class ChildProfileViewController: UIViewController {
         imageView.layer.cornerRadius = 20
         imageView.layer.borderWidth = 2
         imageView.clipsToBounds = true
-        
         imageView.image = image
         
+        header.addSubview(addBehaviour)
+        addBehaviour.addTarget(self, action: #selector(addBehaviourButtonPressed), for: .touchUpInside)
+        addBehaviour.translatesAutoresizingMaskIntoConstraints = false
+        addBehaviour.heightAnchor.constraint(equalTo: header.heightAnchor, multiplier: 0.25).isActive = true
+        addBehaviour.widthAnchor.constraint(equalTo: addBehaviour.heightAnchor).isActive = true
+        addBehaviour.leadingAnchor.constraint(equalTo: header.trailingAnchor, constant: -70.0).isActive = true
+        addBehaviour.bottomAnchor.constraint(equalTo: header.bottomAnchor, constant: -5.0).isActive = true
+        addBehaviour.backgroundColor = UIColor.clear
+        addBehaviour.setTitle("+", for: .normal)
         
         // Chart View
         self.view.addSubview(chart)
@@ -78,8 +93,6 @@ class ChildProfileViewController: UIViewController {
         chart.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
         chart.backgroundColor = UIColor.white
         
-        
-       
     }
     
 }
