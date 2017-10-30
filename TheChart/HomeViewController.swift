@@ -14,12 +14,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     let reuseIdentifier = "cell"
     var tableView: UITableView  =   UITableView()
-    
-
-//    let defaultChild = Child(name: "Add Child", age: "")
-//      let cellReuseIdendifier = "cell"
-    
-    
+  
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView = UITableView(frame: UIScreen.main.bounds, style: UITableViewStyle.plain)
@@ -28,11 +23,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         tableView.register(HomeTableViewCell.self, forCellReuseIdentifier: "cell")
         self.view.addSubview(self.tableView)
 
-//        let defaultChild = Child(context: sharedChildModel.context)
-//        defaultChild.name = "Add Child"
-//        defaultChild.age = ""
-//        sharedChildModel.saveContext()
-//        sharedChildModel.children.append(defaultChild)
         sharedChildModel.fetch()
         tableView.reloadData()
     }
@@ -66,14 +56,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
             as! HomeTableViewCell
         
-//                if indexPath.row == 0 {
-//                    cell.nameLabel.text = "Add Child"
-//                    cell.profileImage.backgroundColor = UIColor.darkGray
-//                    return cell
-//                }
-//        
-        //        guard let name = sharedChildModel.children[indexPath.row].name else { return }
-        //        guard let age = sharedChildModel.children[indexPath.row].age else { return }
         
         if let name = sharedChildModel.children[indexPath.row].name {
             cell.nameLabel.text = "Name: \(name)"

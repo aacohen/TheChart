@@ -33,8 +33,18 @@ class ChildProfileViewController: UIViewController {
     
     func addBehaviourButtonPressed() {
         let destVC = AddBehaviourViewController()
-       
-        navigationController?.pushViewController(destVC, animated: true)
+        
+        destVC.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+
+        
+        present(destVC, animated: true, completion: nil)
+        
+//        let destVC = AddBehaviourViewController()
+//       
+//        navigationController?.pushViewController(destVC, animated: true)
+        
+        
+        
     }
     
     func setupView() {
