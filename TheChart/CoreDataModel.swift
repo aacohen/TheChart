@@ -14,6 +14,7 @@ final class CoreDataModel {
     
     static let shared = CoreDataModel()
     var children = [Child]()
+    var chores = [Chore]()
     
     private static let name = "TheChart"
     
@@ -57,10 +58,26 @@ final class CoreDataModel {
         
     }
     
+    func fetchChore(child1: Child) {
+        
+        let predicate = NSPredicate(format: "child = %@", argumentArray: [child1])
+        let request = NSFetchRequest<Chore>(entityName: "Chore")
+        request.predicate = predicate
+        
+        do { let chore = try context.fetch(request)
+            chores = chore
+            
+        } catch {
+            print ("error")
+        }
+        
+    }
+    
     func delete(indexPath: IndexPath) {
         
         context.delete(children[indexPath.row] as NSManagedObject)
-        children.remove(at: indexPath.row)
+//        context.delete(chores[indexPath.row] as NSManagedObject)
+//        chores.remove(at: indexPath.row)
         saveContext()
     }
     

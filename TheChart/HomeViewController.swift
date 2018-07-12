@@ -20,7 +20,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         tableView = UITableView(frame: UIScreen.main.bounds, style: UITableViewStyle.plain)
         tableView.delegate      =   self
         tableView.dataSource    =   self
-        tableView.register(HomeTableViewCell.self, forCellReuseIdentifier: "cell")
+        tableView.register(HomeTableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
         self.view.addSubview(self.tableView)
 
         sharedChildModel.fetch()
@@ -28,6 +28,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        sharedChildModel.fetch()
         tableView.reloadData()
     }
     
@@ -48,6 +49,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return sharedChildModel.children.count
+        
     }
     
     
@@ -56,15 +58,15 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
             as! HomeTableViewCell
         
-        
+       
         if let name = sharedChildModel.children[indexPath.row].name {
             cell.nameLabel.text = "Name: \(name)"
         }
-        
+
         if let age = sharedChildModel.children[indexPath.row].age {
             cell.ageLabel.text = "Age: \(age)"
         }
-        
+
         if let imageData = sharedChildModel.children[indexPath.row].image {
             let image = UIImage(data: imageData as Data)
             cell.profileImage.image = image
@@ -82,22 +84,42 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        if indexPath.row == 0 {
-            goToAddChild()
-        } else {
+//        if indexPath.row == 0 {
+//            goToAddChild()
+//        } else {
             guard let name = sharedChildModel.children[indexPath.row].name, let imageData = sharedChildModel.children[indexPath.row].image else { return }
             let age = sharedChildModel.children[indexPath.row].age
             
             guard let image = UIImage(data: imageData as Data) else {return}
-            goToChildProfile(name: name, image: image)
+            goToChildProfile(child: sharedChildModel.children[indexPath.row])
             
-        }
+//        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UIScreen.main.bounds.size.height * 0.2
     }
     
+   func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let view = UIView()
+        view.backgroundColor = UIColor.clear
+        let addChildButton = UIButton()
+    view.addSubview(addChildButton)
+    addChildButton.translatesAutoresizingMaskIntoConstraints = false
+    addChildButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 5).isActive = true
+    addChildButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -5).isActive = true
+    addChildButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.15).isActive = true
+    addChildButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50.0).isActive = true
+    addChildButton.backgroundColor = UIColor.blue
+    addChildButton.layer.cornerRadius = 20
+    addChildButton.layer.borderWidth = 2
+    //        addChildButton.layer.borderColor = CG
+    addChildButton.clipsToBounds = true
+    addChildButton.setTitle("Add Child", for: .normal)
+    addChildButton.addTarget(self, action: #selector(self.goToAddChild), for: .touchUpInside)
+    
+        return view
+    }
     
     // MARK: - SWIPE TO DELETE CELL
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -105,7 +127,9 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if (editingStyle == UITableViewCellEditingStyle.delete) && indexPath.row != 0 {
+        print("children: \(sharedChildModel.children)")
+        print("chores: \(sharedChildModel.chores)")
+        if editingStyle == UITableViewCellEditingStyle.delete  {
             // delete data and row
             sharedChildModel.delete(indexPath: indexPath)
             tableView.deleteRows(at: [indexPath], with: .fade)
@@ -119,10 +143,10 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         navigationController?.pushViewController(destVC, animated: true)
     }
     
-    func goToChildProfile(name: String, image: UIImage){
+    func goToChildProfile(child: Child){
         let destVC = ChildProfileViewController()
-        destVC.name = name
-        destVC.image = image
+        destVC.child = child
+        
         navigationController?.pushViewController(destVC, animated: true)
     }
     

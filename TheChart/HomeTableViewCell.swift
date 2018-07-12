@@ -13,7 +13,7 @@ class HomeTableViewCell: UITableViewCell {
     
 
     var profileImage = UIImageView()
-    var nameLabel = UILabel ()
+    var nameLabel = UILabel()
     var ageLabel = UILabel()
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
@@ -37,7 +37,6 @@ class HomeTableViewCell: UITableViewCell {
     }
     
     func layoutElements() {
-        
         
         self.contentView.addSubview(nameLabel)
         nameLabel.translatesAutoresizingMaskIntoConstraints = false

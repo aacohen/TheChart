@@ -9,6 +9,8 @@
 import UIKit
 
 class AddBehaviourTableViewCell: UITableViewCell {
+    
+    
 
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -34,6 +36,8 @@ class AddBehaviourTableViewCell: UITableViewCell {
     
     func layoutElements() {
         self.contentView.backgroundColor = UIColor.red
+        
+        
     }
 
     

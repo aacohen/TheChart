@@ -32,9 +32,6 @@ class AddChildViewController: UIViewController, UICollectionViewDelegate {
         view.backgroundColor = UIColor.blue
         setupView()
     
-        
-        
-        // Do any additional setup after loading the view.
     }
 
     override func viewWillAppear(_ animated: Bool) {

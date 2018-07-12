@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		68D63F41F9DA2BF2C0F17744 /* Pods_TheChart.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B415C07A03AFBCD35245397 /* Pods_TheChart.framework */; };
 		F31D1D921FA26AD10086DD62 /* AddBehaviourViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31D1D911FA26AD10086DD62 /* AddBehaviourViewController.swift */; };
+		F338954C20A0B42700B862F9 /* ChartViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F338954B20A0B42700B862F9 /* ChartViewCell.swift */; };
 		F34C76DF1E675911008600DA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34C76DE1E675911008600DA /* AppDelegate.swift */; };
 		F34C76E41E675911008600DA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F34C76E21E675911008600DA /* Main.storyboard */; };
 		F34C76E71E675911008600DA /* TheChart.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F34C76E51E675911008600DA /* TheChart.xcdatamodeld */; };
@@ -31,6 +32,7 @@
 		6B415C07A03AFBCD35245397 /* Pods_TheChart.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TheChart.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E230483BFDBE7C3769721F48 /* Pods-TheChart.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TheChart.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TheChart/Pods-TheChart.debug.xcconfig"; sourceTree = "<group>"; };
 		F31D1D911FA26AD10086DD62 /* AddBehaviourViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddBehaviourViewController.swift; sourceTree = "<group>"; };
+		F338954B20A0B42700B862F9 /* ChartViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartViewCell.swift; sourceTree = "<group>"; };
 		F34C76DB1E675911008600DA /* TheChart.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TheChart.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F34C76DE1E675911008600DA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F34C76E31E675911008600DA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -128,6 +130,7 @@
 			isa = PBXGroup;
 			children = (
 				F34C76F51E6DAEB5008600DA /* HomeTableViewCell.swift */,
+				F338954B20A0B42700B862F9 /* ChartViewCell.swift */,
 				F3B7DD661FA7942F0020EBA2 /* AddBehaviourTableViewCell.swift */,
 				F3C2B91D1E82D0ED00F66F9C /* ChildProfileTableViewCell.swift */,
 				F3EB1B501F30091300EFD14C /* ProfileImageView.swift */,
@@ -277,6 +280,7 @@
 				F34C76E71E675911008600DA /* TheChart.xcdatamodeld in Sources */,
 				F34C76F61E6DAEB5008600DA /* HomeTableViewCell.swift in Sources */,
 				F3C2B91E1E82D0ED00F66F9C /* ChildProfileTableViewCell.swift in Sources */,
+				F338954C20A0B42700B862F9 /* ChartViewCell.swift in Sources */,
 				F35E85921E7C32D8000D88DE /* CoreDataModel.swift in Sources */,
 				F35E858D1E7AD835000D88DE /* ChildData.swift in Sources */,
 				F35E85941E804E1C000D88DE /* ChildProfileViewController.swift in Sources */,
