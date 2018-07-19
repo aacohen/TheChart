@@ -76,8 +76,14 @@ final class CoreDataModel {
     func delete(indexPath: IndexPath) {
         
         context.delete(children[indexPath.row] as NSManagedObject)
+        
+          //Do the chores associated with the Child get deleted as well?
+        
 //        context.delete(chores[indexPath.row] as NSManagedObject)
 //        chores.remove(at: indexPath.row)
+        
+      
+        children.remove(at: indexPath.row)
         saveContext()
     }
     
