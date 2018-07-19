@@ -138,7 +138,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     // MARK: - PUSH TO ADD CHILD VIEW CONTROLLER
-    func goToAddChild(){
+    @objc func goToAddChild(){
         let destVC = AddChildViewController()
         navigationController?.pushViewController(destVC, animated: true)
     }

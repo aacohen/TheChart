@@ -135,7 +135,7 @@ class AddChildViewController: UIViewController, UICollectionViewDelegate {
     
    // MARK: - Navigation
     
-    func submitButtonPressed() {
+    @objc func submitButtonPressed() {
         //validate fields?
         guard let name = nameTextField.text, let age = ageTextField.text else { return }
         
@@ -154,7 +154,7 @@ class AddChildViewController: UIViewController, UICollectionViewDelegate {
         print("submit button pressed")
     }
     
-    func chooseImageButtonPressed() {
+    @objc func chooseImageButtonPressed() {
         profileImageView.isHidden = false
         print ("Choose image button pressed")
         //unhide collection view

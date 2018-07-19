@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Charts
 
 class ChildProfileViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -16,7 +15,6 @@ class ChildProfileViewController: UIViewController, UITableViewDelegate, UITable
     var child = Child()
     
     var header: UIView = UIView()
-    var chart = HorizontalBarChartView()
     var nameLabel = UILabel()
     var imageView = UIImageView()
 
@@ -82,7 +80,7 @@ class ChildProfileViewController: UIViewController, UITableViewDelegate, UITable
         return UIScreen.main.bounds.size.height * 0.15
     }
     
-    func addBehaviourButtonPressed() {
+    @objc func addBehaviourButtonPressed() {
         let destVC = AddBehaviourViewController()
         destVC.child = child
         navigationController?.pushViewController(destVC, animated: true)

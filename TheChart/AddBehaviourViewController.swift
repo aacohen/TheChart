@@ -143,7 +143,7 @@ class AddBehaviourViewController: UIViewController, UITableViewDelegate, UITable
 //        self.dismiss(animated: true, completion: nil)
 //    }
     
-    func submitButtonPressed() {
+    @objc func submitButtonPressed() {
         print("submit")
         var choreName = String()
         var rewardName = String()
