@@ -14,10 +14,15 @@ class ChartViewCell: UITableViewCell {
     
     var choreImage = UIImageView()
     var choreName = UILabel()
-    var starView = UIView()
+    var starView: UICollectionView!
+    var containerView = UIView()
+    
     var rewardsView = UIView()
-    var rewardImage = UIImageView()
+//    var rewardImage = UIImageView()
     var rewardLabel = UILabel()
+    
+    // Static
+    let padding:Int = 10
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -37,6 +42,31 @@ class ChartViewCell: UITableViewCell {
         
         layoutElements()
         
+    }
+    
+    func setCollectionViewDataSourceDelegate
+        <D: UICollectionViewDataSource & UICollectionViewDelegate>
+        (dataSourceDelegate: D, forRow row: Int) {
+        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+        layout.sectionInset = UIEdgeInsets(top: CGFloat(padding), left: CGFloat(padding), bottom: CGFloat(padding), right: CGFloat(padding))
+        
+//        layout.itemSize = CGSize(width: 90, height: 120)
+        
+//        starView = UICollectionView(frame: containerView.frame)
+        starView = UICollectionView(frame: containerView.frame, collectionViewLayout: layout)
+        
+        starView.delegate = dataSourceDelegate
+        starView.dataSource = dataSourceDelegate
+        starView.register(StarViewCell.self, forCellWithReuseIdentifier: "starCell")
+        containerView.addSubview(starView)
+        starView.translatesAutoresizingMaskIntoConstraints = false
+        starView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor).isActive = true
+        starView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor).isActive = true
+        starView.topAnchor.constraint(equalTo: containerView.topAnchor).isActive = true
+        starView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor).isActive = true
+        starView.backgroundColor = UIColor.white
+        starView.tag = row
+        starView.reloadData()
     }
     
     func layoutElements() {
@@ -75,12 +105,14 @@ class ChartViewCell: UITableViewCell {
         rewardsView.leadingAnchor.constraint(equalTo: rewardLabel.leadingAnchor).isActive = true
         rewardsView.backgroundColor = UIColor.orange
 
-        self.contentView.addSubview(starView)
-        starView.translatesAutoresizingMaskIntoConstraints = false
-        starView.leadingAnchor.constraint(equalTo: choreName.trailingAnchor).isActive = true
-        starView.trailingAnchor.constraint(equalTo: rewardLabel.leadingAnchor).isActive = true
-        starView.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
-        starView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
-        starView.backgroundColor = UIColor.yellow
+        self.contentView.addSubview(containerView)
+        containerView.translatesAutoresizingMaskIntoConstraints = false
+        containerView.leadingAnchor.constraint(equalTo: choreName.trailingAnchor).isActive = true
+        containerView.trailingAnchor.constraint(equalTo: rewardLabel.leadingAnchor).isActive = true
+        containerView.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
+        containerView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
+        
+        
+
     }
 }

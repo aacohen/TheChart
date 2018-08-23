@@ -143,7 +143,7 @@ class AddChildViewController: UIViewController, UICollectionViewDelegate {
         newChild.name = name
         newChild.age = age
         let imageData =  UIImagePNGRepresentation(profileImageView.selectedImage)
-        newChild.image = imageData! as NSData
+        newChild.image = imageData! as NSData as Data
         
         CoreDataModel.shared.saveContext()
         CoreDataModel.shared.children.append(newChild)

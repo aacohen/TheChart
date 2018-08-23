@@ -12,7 +12,7 @@ class ChildProfileViewController: UIViewController, UITableViewDelegate, UITable
     
     let sharedChildModel = CoreDataModel.shared
     
-    var child = Child()
+    var child: Child!
     
     var header: UIView = UIView()
     var nameLabel = UILabel()
@@ -51,6 +51,8 @@ class ChildProfileViewController: UIViewController, UITableViewDelegate, UITable
         // Dispose of any resources that can be recreated.
     }
     
+
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         
         return 1
@@ -72,8 +74,13 @@ class ChildProfileViewController: UIViewController, UITableViewDelegate, UITable
         cell.rewardLabel.text = sharedChildModel.chores[indexPath.row].rewardName
         
         
-        
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        guard let tableViewCell = cell as? ChartViewCell else { return }
+
+        tableViewCell.setCollectionViewDataSourceDelegate(dataSourceDelegate: self, forRow: indexPath.row)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -136,20 +143,6 @@ class ChildProfileViewController: UIViewController, UITableViewDelegate, UITable
         addBehaviour.backgroundColor = UIColor.clear
         addBehaviour.setTitle("+", for: .normal)
         
-//        // Chart View
-//        self.view.addSubview(chart)
-//        chart.translatesAutoresizingMaskIntoConstraints = false
-//        chart.topAnchor.constraint(equalTo: header.bottomAnchor).isActive = true
-//
-//        chart.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
-//        chart.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
-//        chart.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
-//        chart.backgroundColor = UIColor.white
-//
-//        chart.animate(xAxisDuration: 2.0, yAxisDuration: 2.0, easingOption: .easeInBounce)
-//
-//        setChart(dataPoints: chores, values: numberOfCurrentStars)
-        
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.topAnchor.constraint(equalTo: header.bottomAnchor).isActive = true
         tableView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
@@ -157,37 +150,58 @@ class ChildProfileViewController: UIViewController, UITableViewDelegate, UITable
         tableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
     }
     
-//    func setChart(dataPoints: [String], values: [Double]) {
-//        chart.noDataText = "Add behaviour to the chart."
-//
-//        var dataEntries: [BarChartDataEntry] = []
-//
-//        for i in 0..<dataPoints.count {
-////            let dataEntry = BarChartDataEntry(x: Double(values[i]) , y: Double(i))
-//            let dataEntry = BarChartDataEntry(x: Double(i) , y: Double(values[i]))
-//            dataEntries.append(dataEntry)
-//        }
-//
-//        let chartDataSet = BarChartDataSet(values: dataEntries, label: "")
-//        let chartData = BarChartData()
-//        chartData.addDataSet(chartDataSet)
-//
-//        chartData.setDrawValues(false)
-//        chartDataSet.colors = ChartColorTemplates.joyful()
-//        chart.data = chartData
-//        chart.leftAxis.labelPosition = .outsideChart
-//
-//        chart.xAxis.drawGridLinesEnabled = false
-//        chart.leftAxis.drawGridLinesEnabled = false
-//        chart.xAxis.labelPosition = .bottom
-//        chart.xAxis.valueFormatter = IndexAxisValueFormatter(values: chores)
-//        chart.legend.enabled = false
-//
-//        chart.xAxis.granularityEnabled = true
-//        chart.xAxis.granularity = 1
-//
-//        let formatter: Formatter = Formatter()
-//
-//    }
+}
+
+extension ChildProfileViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        
+        let width = (collectionView.frame.width - 20)/7
+        
+        
+        return CGSize(width: width, height: width)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        print("number of items in sections \(Int(sharedChildModel.chores[collectionView.tag].lengthTarget))")
+        return Int(sharedChildModel.chores[collectionView.tag].lengthTarget)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "starCell", for: indexPath) as! StarViewCell
+        
+        cell.backgroundColor = UIColor.clear
+        return cell
+    }
+    
+    
+    
+}
+
+class StarViewCell: UICollectionViewCell {
+    
+    var starView = UIImageView()
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        
+        self.contentView.addSubview(starView)
+        starView.translatesAutoresizingMaskIntoConstraints = false
+        starView.topAnchor.constraint(equalTo: self.contentView.topAnchor).isActive = true
+        starView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor).isActive = true
+        starView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor).isActive = true
+        starView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor).isActive = true
+        
+        starView.image = #imageLiteral(resourceName: "STAR")
+        
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+
+    }
+    
+
 }
